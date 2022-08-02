@@ -1,0 +1,2 @@
+https://docs.github.com/en/github/site-policy/github-terms-of-serviceLicense Grant to Other Users
+Any User-Generated Content you post publicly, including issues, comments, and contributions to other Users' repositories, may be viewed by others. By setting your repositories to be viewed publicly, you agree to allow others to view and "fork" your repositories (this means that others may make their own copies of Content from your repositories in repositories they control).
