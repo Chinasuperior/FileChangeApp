@@ -36,4 +36,11 @@
         android:onClick="remove"
         android:layout_height="wrap_content"
         android:text="开始移动" />
+
+    <Button
+        android:id="@+id/btn_inputdb"
+        android:layout_width="match_parent"
+        android:onClick="inputdb"
+        android:layout_height="wrap_content"
+        android:text="数据入库" />
 </LinearLayout>

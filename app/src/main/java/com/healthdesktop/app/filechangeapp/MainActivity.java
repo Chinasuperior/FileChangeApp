@@ -12,8 +12,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.blankj.utilcode.utils.FileUtils;
+import com.healthdesktop.app.filechangeapp.bean.VideoBean;
+
+import org.litepal.LitePal;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.healthdesktop.app.filechangeapp.MyApplication.getListData;
@@ -30,10 +35,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
 
         etFrom = (EditText) findViewById(R.id.et_from);
         etTo = (EditText) findViewById(R.id.et_to);
@@ -56,14 +57,9 @@ public class MainActivity extends AppCompatActivity {
         });
         etFrom.setText(getListData());
 
-
-
         Intent intentt = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
         intentt.setData(Uri.parse("package:" + getPackageName()));
         startActivityForResult(intentt,100);
-
-
-
     }
 
     @Override
@@ -89,5 +85,24 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this,""+f.renameTo(new File(etTo.getText().toString()+"/"+f.getName())),Toast.LENGTH_SHORT).show();
         }
     }
+
+     public void inputdb(View v){
+         File file = new File(getListData());
+         File[] fs = file.listFiles();
+         int num = 0;
+         if (fs != null && fs.length > 0) {
+             for (int i = 0; i < fs.length; i++) {
+                 if (fs[i].getName().toLowerCase().endsWith(".mp4")) {
+                     if(LitePal.where("videoid=?",fs[i].getName().substring(0,fs[i].getName().indexOf("."))).find(VideoBean.class).size()==0){
+                         VideoBean vbItem = new VideoBean();
+                         vbItem.setVideoid(fs[i].getName().substring(0,fs[i].getName().indexOf(".")));
+                         vbItem.save();
+                         num++;
+                     }
+                 }
+             }
+         }
+         Toast.makeText(MainActivity.this,"入库："+num,Toast.LENGTH_SHORT).show();
+     }
 
 }

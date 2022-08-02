@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
 
     <Button
@@ -17,5 +17,21 @@
         android:contentDescription="@null"
         />
 
+    <Button
+        android:id="@+id/alert_window_count"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="2px"
+        android:textColor="#fff"
+        android:layout_below="@+id/alert_window_imagebtn"
+        android:textStyle="bold"
+        android:paddingLeft="10px"
+        android:layout_centerVertical="true"
+        android:paddingRight="10px"
+        android:text="统计"
+        android:background="#22000000"
+        android:contentDescription="@null"
+        />
 
-</LinearLayout>
+
+</RelativeLayout>
